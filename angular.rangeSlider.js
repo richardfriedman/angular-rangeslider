@@ -117,7 +117,9 @@
                     min: '=',
                     max: '=',
                     modelMin: '=?',
+                    defaultMin: '@',
                     modelMax: '=?',
+                    defaultMax: '@',
                     onHandleDown: '&', // calls optional function when handle is grabbed
                     onHandleUp: '&', // calls optional function when handle is released
                     orientation: '@', // options: horizontal | vertical | vertical left | vertical right
@@ -292,7 +294,7 @@
                         if(scope.getterSetter) {
                             return arguments.length ? scope.modelMin(newValue) : scope.modelMin();
                         } else {
-                            return arguments.length ? (scope.modelMin = newValue) : scope.modelMin;
+                            return arguments.length ? (scope.modelMin = newValue) : scope.modelMin || scope.defaultMin;
                         }
                     }
 
@@ -300,7 +302,7 @@
                         if(scope.getterSetter) {
                             return arguments.length ? scope.modelMax(newValue) : scope.modelMax();
                         } else {
-                            return arguments.length ? (scope.modelMax = newValue) : scope.modelMax;
+                            return arguments.length ? (scope.modelMax = newValue) : scope.modelMax || scope.defaultMax;
                         }
                     }
 
